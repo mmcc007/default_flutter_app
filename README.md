@@ -10,10 +10,14 @@ This created a testable flutter app that is runnable and testable. In practice, 
 To run the app as a non-testable app, make sure you have a device attached and run:
 ```
 flutter run
+or 
+flutter --verbose run
 ```
 To test the testable app, make sure you have a device attached and run:
 ```
 flutter driver test_driver/main.dart
+or 
+flutter --verbose driver test_driver/main.dart
 ```
 Note: for simplicity, testing in this context refers only to integration testing. It is still possible to run unit and widget tests on the 'non-testable' app. 
 
