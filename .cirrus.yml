@@ -1,0 +1,12 @@
+task:
+  name: Test (ARM)
+  container:
+    dockerfile: .ci/Dockerfile.x86
+    cpu: 4
+    memory: 10G
+    kvm: true
+  pub_cache:
+    folder: ~/.pub-cache
+  test_script:
+    - export PATH="$PATH":"$HOME/.pub-cache/bin"
+    - flutter drive test_driver/main.dart
