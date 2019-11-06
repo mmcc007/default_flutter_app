@@ -1,3 +1,5 @@
+[![Build Status](https://api.cirrus-ci.com/github/mmcc007/default_flutter_app.svg)](https://cirrus-ci.com/github/mmcc007/default_flutter_app)
+
 # default_flutter_app
 
 This app was created using 
