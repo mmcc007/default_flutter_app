@@ -7,20 +7,12 @@ task:
     kvm: true
   pub_cache:
     folder: ~/.pub-cache
-  start_emulator:
-    - EMU_PARAMS="
-      -avd test
-      -verbose
-      -no-window
-      -no-audio
-      "
-    - ${ANDROID_HOME}/emulator/emulator-headless ${EMU_PARAMS} &
-    # wait for emulator to finish startup
+  start_emulator_background_script:
+    $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window
+  wait_for_emulator_script:
     - ./script/android-wait-for-emulator.sh
-    # unlock screen
-    - adb shell input keyevent 82 &
-
-    - flutter doctor -v
+    - adb shell input keyevent 82
+  doctor_script: flutter doctor -v
   test_script:
     - export PATH="$PATH":"$HOME/.pub-cache/bin"
     - flutter drive test_driver/main.dart
