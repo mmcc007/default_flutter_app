@@ -294,7 +294,7 @@ before_script:
 
 script:
   # run test with retries
-  - flutter driver lib/main.dart || flutter driver lib/main.dart || flutter driver lib/main.dart
+  - flutter driver test_driver/main.dart || flutter driver test_driver/main.dart || flutter driver test_driver/main.dart
 
 #before_cache:
 #  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
