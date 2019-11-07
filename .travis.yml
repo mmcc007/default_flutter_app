@@ -293,8 +293,6 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - cd flutter_app
-  - flutter pub get
   # run test with retries
   - flutter driver lib/main.dart || flutter driver lib/main.dart || flutter driver lib/main.dart
 
