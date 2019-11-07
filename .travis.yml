@@ -261,14 +261,14 @@ install:
     -no-window
     -no-audio
     "
-  - EMU_COMMAND="emulator"
-  - |
-    if [[ $ABI =~ "x86" ]]; then
-      EMU_COMMAND="emulator-headless"
-    else
-      # emulate graphics if running on ARM
-      EMU_PARAMS="${EMU_PARAMS} -gpu swiftshader"
-    fi
+  - EMU_COMMAND="emulator-headless" # default for now
+#  - |
+#    if [[ $ABI =~ "x86" ]]; then
+#      EMU_COMMAND="emulator-headless"
+#    else
+#      # emulate graphics if running on ARM
+#      EMU_PARAMS="${EMU_PARAMS} -gpu swiftshader"
+#    fi
   # This double "sudo" monstrosity is used to have Travis execute the
   # emulator with its new group permissions and help preserve the rule
   # of least privilege.
