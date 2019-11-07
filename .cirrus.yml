@@ -13,7 +13,6 @@ task:
     - $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window
   wait_for_emulator_script:
     - ./script/android-wait-for-emulator.sh
-    - adb shell input keyevent 82
   doctor_script: flutter doctor -v
   test_script:
     - export PATH="$PATH":"$HOME/.pub-cache/bin"
