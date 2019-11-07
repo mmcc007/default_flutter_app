@@ -203,7 +203,10 @@ before_install:
   - source ~/.install-jdk-travis.sh
 
   # Set up Android SDK
-  - sudo apt-get -y --no-install-recommends install libxcursor1 # required by ARM emulator
+#  - |
+#    if [[ $ABI =~ "arm" ]]; then
+#      sudo apt-get -y --no-install-recommends install libxcursor1 # required by ARM emulator
+#    fi
   - wget -q "https://dl.google.com/android/repository/sdk-tools-linux-$ANDROID_TOOLS.zip" -O android-sdk-tools.zip
   - unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
   - rm android-sdk-tools.zip
@@ -257,7 +260,6 @@ install:
 #      -qemu -m 2048"
   - EMU_PARAMS="
     -avd test
-    -verbose
     -no-window
     -no-audio
     "
@@ -275,7 +277,7 @@ install:
   - sudo -E sudo -u $USER -E bash -c "${ANDROID_HOME}/emulator/${EMU_COMMAND} ${EMU_PARAMS} &"
 
   # install flutter (while emulator is starting)
-  - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
+#  - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
   - wget --quiet --output-document=flutter.tar.xz https://storage.googleapis.com/flutter_infra/releases/${FLUTTER_CHANNEL}/linux/flutter_linux_v${FLUTTER_VERSION}.tar.xz
   - tar xf flutter.tar.xz -C $(dirname ${FLUTTER_HOME})
   - rm flutter.tar.xz
@@ -294,7 +296,7 @@ before_script:
 
 script:
   # run test with retries
-  - flutter driver test_driver/main.dart || flutter driver test_driver/main.dart || flutter driver test_driver/main.dart
+  - flutter driver test_driver/main.dart
 
 #before_cache:
 #  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
