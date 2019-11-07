@@ -8,7 +8,8 @@ task:
   pub_cache:
     folder: ~/.pub-cache
   start_emulator_background_script:
-    $ANDROID_HOME/emulator/emulator-headless -avd test -no-audio -no-window
+    - sudo chown cirrus:cirrus /dev/kvm
+    - $ANDROID_HOME/emulator/emulator-headless -avd test -no-audio -no-window
   wait_for_emulator_script:
     - ./script/android-wait-for-emulator.sh
     - adb shell input keyevent 82
