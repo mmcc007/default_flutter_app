@@ -6,7 +6,7 @@ ENV EMULATOR_API_LEVEL=28 ABI="default;x86" EMULATOR_NAME='test'
 #    sudo apt-get install -y imagemagick && \
 #    sudo rm -rf /var/lib/apt/lists/*
 
-RUN sdkmanager "system-images;android-$EMULATOR_API_LEVEL;$ABI"
+RUN sdkmanager --update && sdkmanager "system-images;android-$EMULATOR_API_LEVEL;$ABI"
 
 RUN echo no | avdmanager create avd -n $EMULATOR_NAME -k "system-images;android-$EMULATOR_API_LEVEL;$ABI"
 
