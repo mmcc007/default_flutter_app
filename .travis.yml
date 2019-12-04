@@ -188,6 +188,9 @@ jobs:
     - env: API=16 ABI=armeabi-v7a GOO=default     # hangs after installing apk
 
 before_install:
+  # check if hardware acceleration is enabled
+  - cat /proc/cpuinfo|grep vmx
+
   - java -version
 
   # Set up KVM
